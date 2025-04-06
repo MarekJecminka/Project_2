@@ -6,13 +6,13 @@ email: jecminkam@seznam.cz
 """
 import random
 
-#def say_hi():
-#    greeting = ["Hi there!",
-#               50 * "-",
-#               "I've generated a random 4 digit number for you.", 
-#               "Let's play a bulls and cows game."]
-#    
-#    return print("\n".join(greeting))
+def say_hi():
+    greeting = "\n".join(["Hi there!",
+                50 * "-",
+               "I've generated a random 4 digit number for you.", 
+               "Let's play a bulls and cows game."])
+    
+    return greeting
 
 def create_secret_number():
     secret_number = []    
@@ -24,9 +24,6 @@ def create_secret_number():
             secret_number.append(random_number)
     return "".join(secret_number)
     
-greeting = ["Hi there!",
-               50 * "-",
-               "I've generated a random 4 digit number for you.", 
-               "Let's play a bulls and cows game."]
+print(say_hi())
+print(create_secret_number())
 
-print("\n".join(greeting))
