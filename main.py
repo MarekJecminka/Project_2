@@ -6,12 +6,12 @@ email: jecminkam@seznam.cz
 """
 import random
 
-def say_hi():
-     return "\n".join(["Hi there!",
-                        50 * "-",
-                        "I've generated a random 4 digit number for you.", 
-                        "Let's play a bulls and cows game."])
-
+#def say_hi():
+#     return "\n".join(["Hi there!",
+#                        50 * "-",
+#                        "I've generated a random 4 digit number for you.", 
+#                        "Let's play a bulls and cows game."])
+#
 def create_secret_number():
     secret_number = []    
     while len(secret_number) != 4:
@@ -21,7 +21,49 @@ def create_secret_number():
         else:
             secret_number.append(random_number)
     return "".join(secret_number)
+
+def is_user_guess_valid():
+    def duplicates(number_to_check):
+        not_duplicates = []
+        duplicates = []
+        for item in number_to_check:
+            if not item in not_duplicates:
+                not_duplicates.append(item)
+            else:
+                duplicates.append(item)
+        
+        return len(duplicates) != 0
+
+    print(50 * "-")
+    valid_user_number = ""
+    while True:
+        user_number = input("Enter a number: ")
+        if len(user_number) != 4:
+            print("Your number is not 4 digit. Type 4 digit number next time!")
+        elif not user_number.isdigit():
+            print("You did not type digits! Enter digits next time!")
+        elif user_number[0] == "0":
+            print("Numbers can not start with zero. Type digits that do not start with zero next time!")
+        elif duplicates(user_number) == True:
+            print("Number contains duplicates. Type unique number next time!")
+        else:
+            valid_user_number += user_number
+            break
     
-print(say_hi())
+    return valid_user_number
+
+#print(say_hi())
 print(create_secret_number())
+print(is_user_guess_valid())
+
+while True:
+    if is_user_guess_valid() == create_secret_number():
+        print("Huraaa")
+        break
+    else:
+        print("Ne hura")
+
+
+
+
 
