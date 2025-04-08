@@ -20,9 +20,9 @@ def create_secret_number():
             continue
         else:
             secret_number.append(random_number)
-    return "".join(secret_number)
+    return "1234" #"".join(secret_number)
 
-def is_user_guess_valid():
+def get_valid_user_guess():
     def duplicates(number_to_check):
         not_duplicates = []
         duplicates = []
@@ -53,15 +53,31 @@ def is_user_guess_valid():
     return valid_user_number
 
 #print(say_hi())
-print(create_secret_number())
-print(is_user_guess_valid())
+#print(create_secret_number())
+#print(is_user_guess_valid())
+
+#passed_user_number = is_user_guess_valid()
+#passed_secret_number = create_secret_number()
+
+passed_user_number = get_valid_user_guess()
+passed_secret_number = create_secret_number()
+
+number_of_guesses = 1
 
 while True:
-    if is_user_guess_valid() == create_secret_number():
-        print("Huraaa")
+    print(50 * "-")
+    if  passed_user_number == passed_secret_number: 
+        print(">>>", passed_user_number)
+        if number_of_guesses == 1:
+            print("Correct, you've guessed the right number\nin", number_of_guesses, "guess!")
+        else:
+            print("Correct, you've guessed the right number\nin", number_of_guesses, "guesses!")
+        print(50 * "-" + "\nThat's amazing!")
         break
     else:
         print("Ne hura")
+
+        break
 
 
 
