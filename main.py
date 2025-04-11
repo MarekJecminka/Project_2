@@ -64,20 +64,17 @@ passed_secret_number = create_secret_number()
 
 number_of_guesses = 1
 
-while True:
-    print(50 * "-")
-    if  passed_user_number == passed_secret_number: 
-        print(">>>", passed_user_number)
-        if number_of_guesses == 1:
-            print("Correct, you've guessed the right number\nin", number_of_guesses, "guess!")
-        else:
-            print("Correct, you've guessed the right number\nin", number_of_guesses, "guesses!")
-        print(50 * "-" + "\nThat's amazing!")
-        break
+while passed_user_number != passed_secret_number:
+    
+else:
+    print(50 * "-",
+          ">>>" + passed_user_number,
+          sep = '\n')
+    if number_of_guesses == 1:
+        print("Correct, you've guessed the right number\nin", number_of_guesses, "guess!")
     else:
-        print("Ne hura")
-
-        break
+        print("Correct, you've guessed the right number\nin", number_of_guesses, "guesses!")
+    print(50 * "-" + "\nThat's amazing!")
 
 
 
