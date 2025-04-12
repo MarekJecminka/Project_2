@@ -44,7 +44,7 @@ def get_valid_user_guess():
             print("You did not type digits! Enter digits next time!")
         elif user_number[0] == "0":
             print("Numbers can not start with zero. Type digits that do not start with zero next time!")
-        elif duplicates(user_number) == True:
+        elif duplicates(user_number):
             print("Number contains duplicates. Type unique number next time!")
         else:
             valid_user_number += user_number
@@ -73,7 +73,7 @@ while passed_user_number != passed_secret_number:
     print(f"{len(bulls)} bull{"s" if len(bulls) > 1 else ""}, {len(cows)} cow{"s" if len(cows) > 1 else ""}")
     
     passed_user_number = get_valid_user_guess()
-    number_of_guesses +=1
+    number_of_guesses += 1
 else:
     print(">>>", passed_user_number)
     print(f"Correct, you've guessed the right number\nin {number_of_guesses} guess{"es" if number_of_guesses > 1 else ""}!")
