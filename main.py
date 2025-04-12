@@ -6,12 +6,12 @@ email: jecminkam@seznam.cz
 """
 import random
 
-#def say_hi():
-#     return "\n".join(["Hi there!",
-#                        50 * "-",
-#                        "I've generated a random 4 digit number for you.", 
-#                        "Let's play a bulls and cows game."])
-#
+def say_hi():
+     return "\n".join(["Hi there!",
+                        50 * "-",
+                        "I've generated a random 4 digit number for you.", 
+                        "Let's play a bulls and cows game."])
+
 def create_secret_number():
     secret_number = []    
     while len(secret_number) != 4:
@@ -20,7 +20,7 @@ def create_secret_number():
             continue
         else:
             secret_number.append(random_number)
-    return "1234" #"".join(secret_number)
+    return "".join(secret_number)
 
 def get_valid_user_guess():
     def duplicates(number_to_check):
@@ -52,12 +52,7 @@ def get_valid_user_guess():
     
     return valid_user_number
 
-#print(say_hi())
-#print(create_secret_number())
-#print(is_user_guess_valid())
-
-#passed_user_number = is_user_guess_valid()
-#passed_secret_number = create_secret_number()
+print(say_hi())
 
 passed_user_number = get_valid_user_guess()
 passed_secret_number = create_secret_number()
@@ -65,18 +60,21 @@ passed_secret_number = create_secret_number()
 number_of_guesses = 1
 
 while passed_user_number != passed_secret_number:
+    print(">>>", passed_user_number)
+    bulls = []
+    cows = []
+
+    for index, item in enumerate(passed_user_number):
+        if item == passed_secret_number[index]:
+            bulls.append(item)
+        elif item in passed_secret_number and item not in bulls:
+            cows.append(item)
     
+    print(f"{len(bulls)} bull{"s" if len(bulls) > 1 else ""}, {len(cows)} cow{"s" if len(cows) > 1 else ""}")
+    
+    passed_user_number = get_valid_user_guess()
+    number_of_guesses +=1
 else:
-    print(50 * "-",
-          ">>>" + passed_user_number,
-          sep = '\n')
-    if number_of_guesses == 1:
-        print("Correct, you've guessed the right number\nin", number_of_guesses, "guess!")
-    else:
-        print("Correct, you've guessed the right number\nin", number_of_guesses, "guesses!")
+    print(">>>", passed_user_number)
+    print(f"Correct, you've guessed the right number\nin {number_of_guesses} guess{"es" if number_of_guesses > 1 else ""}!")
     print(50 * "-" + "\nThat's amazing!")
-
-
-
-
-
