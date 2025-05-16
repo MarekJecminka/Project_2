@@ -49,32 +49,33 @@ def get_valid_user_guess():
         else:
             valid_user_number += user_number
             break
-    
     return valid_user_number
 
-print(say_hi())
-
-passed_user_number = get_valid_user_guess()
-passed_secret_number = create_secret_number()
-
-number_of_guesses = 1
-
-while passed_user_number != passed_secret_number:
-    print(">>>", passed_user_number)
-    bulls = []
-    cows = []
-
-    for index, item in enumerate(passed_user_number):
-        if item == passed_secret_number[index]:
-            bulls.append(item)
-        elif item in passed_secret_number and item not in bulls:
-            cows.append(item)
-    
-    print(f"{len(bulls)} bull{"s" if len(bulls) > 1 else ""}, {len(cows)} cow{"s" if len(cows) > 1 else ""}")
-    
+def play_game():
+    print(say_hi())
     passed_user_number = get_valid_user_guess()
-    number_of_guesses += 1
-else:
-    print(">>>", passed_user_number)
-    print(f"Correct, you've guessed the right number\nin {number_of_guesses} guess{"es" if number_of_guesses > 1 else ""}!")
-    print(50 * "-" + "\nThat's amazing!")
+    passed_secret_number = create_secret_number()
+    number_of_guesses = 1
+
+    while passed_user_number != passed_secret_number:
+        print(">>>", passed_user_number)
+        bulls = []
+        cows = []
+
+        for index, item in enumerate(passed_user_number):
+            if item == passed_secret_number[index]:
+                bulls.append(item)
+            elif item in passed_secret_number and item not in bulls:
+                cows.append(item)
+    
+        print(f"{len(bulls)} bull{"s" if len(bulls) > 1 else ""}, {len(cows)} cow{"s" if len(cows) > 1 else ""}")
+    
+        passed_user_number = get_valid_user_guess()
+        number_of_guesses += 1
+    else:
+        print(">>>", passed_user_number)
+        print(f"Correct, you've guessed the right number\nin {number_of_guesses} guess{"es" if number_of_guesses > 1 else ""}!")
+        print(50 * "-" + "\nThat's amazing!")
+
+if __name__ == "__main__":
+    play_game()
